@@ -4,11 +4,40 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
     <title>Currency exchange rate app</title>
 </head>
 <body>
-    
+    <div id="currencycontainer">
+        <h1>Exchange rates calculator</h1>
+        <div id="fromcurrencyonesection">
+            <div id="fromcurinputone">
+                <label for="fromcurrencyone"></label>
+                <input class="inputstyle" type="number" id="fromcurrencyone" value="1">
+            </div>
+            <div id="fromcurselone">
+                <label for="fromcurrencytypeone"></label>
+                <select class="selectstyle" id="fromcurrencytypeone">
+                    <option selected>CZK</option>
+                    <option>EUR</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="fromcurrencyonesection">
+            <div id="fromcurinputtwo">
+                <label for="fromcurrencytwo"></label>
+                <input class="inputstyle" type="number" id="fromcurrencytwo">
+            </div>
+            <div id="fromcurseltwo">
+                <label for="tocurrency"></label>
+                <select class="selectstyle" id="fromcurrencytwo">
+                    <option>CZK</option>
+                    <option selected>EUR</option>
+                </select>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
