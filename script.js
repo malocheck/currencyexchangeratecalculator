@@ -37,6 +37,10 @@ function calculateExchange(){
     //on change event - there is one thing we have the exchange rates for the base currency and it would be necessary to really 
     //recalculate the exchange rates - what if the user chooses different exchange rate than USD? USD to EUR or any other is pretty easy
     //but what about CZK to EUR when we have the courses just for USD vs other currencies?
+
+    if (fromCurrencyOption.innerHTML === "USD" || toCurrencyOption.innerHTML === "USD"){
+        
+    }
 }
 
 exchangeRate.send();
