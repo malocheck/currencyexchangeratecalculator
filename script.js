@@ -11,7 +11,7 @@ exchangeRate.open('GET', 'https://openexchangerates.org/api/latest.json?app_id=2
 exchangeRate.onload = function(){
     const listOfExchangeRates = JSON.parse(exchangeRate.response);
     if(selectedFromCurrency.value === 'USD' && selectedToCurrency.value === 'EUR') {
-        resultToCurrency.value = parseFloat(resultFromCurrency.value) * parseFloat(listOfExchangeRates.rates[selectedToCurrency.value]);
+        resultToCurrency.value = (parseFloat(resultFromCurrency.value) * parseFloat(listOfExchangeRates.rates[selectedToCurrency.value])).toFixed(2);
     } else {
         return;
     }
@@ -20,18 +20,18 @@ exchangeRate.onload = function(){
 function calculateFrom(){
 const listOfExchangeRates = JSON.parse(exchangeRate.response);
     if(selectedFromCurrency.value === 'USD' && selectedToCurrency.value === 'EUR') {
-        resultToCurrency.value = parseFloat(resultFromCurrency.value) * parseFloat(listOfExchangeRates.rates[selectedToCurrency.value]);
+        resultToCurrency.value = (parseFloat(resultFromCurrency.value) * parseFloat(listOfExchangeRates.rates[selectedToCurrency.value])).toFixed(2);
     } else {
-        resultToCurrency.value = parseFloat(resultFromCurrency.value) * parseFloat(listOfExchangeRates.rates[selectedToCurrency.value])/parseFloat(listOfExchangeRates.rates[selectedFromCurrency.value]);
+        resultToCurrency.value = (parseFloat(resultFromCurrency.value) * parseFloat(listOfExchangeRates.rates[selectedToCurrency.value])/parseFloat(listOfExchangeRates.rates[selectedFromCurrency.value])).toFixed(2);
     }
 }
 
 function calculateTo(){
     const listOfExchangeRates = JSON.parse(exchangeRate.response);
     if(selectedFromCurrency.value === 'USD' && selectedToCurrency.value === 'EUR') {
-        resultFromCurrency.value = parseFloat(resultToCurrency.value) / parseFloat(listOfExchangeRates.rates[selectedToCurrency.value]);
+        resultFromCurrency.value = (parseFloat(resultToCurrency.value) / parseFloat(listOfExchangeRates.rates[selectedToCurrency.value])).toFixed(2);
     } else {
-        resultFromCurrency.value = parseFloat(resultToCurrency.value) * parseFloat(listOfExchangeRates.rates[selectedFromCurrency.value])/parseFloat(listOfExchangeRates.rates[selectedToCurrency.value]);
+        resultFromCurrency.value = (parseFloat(resultToCurrency.value) * parseFloat(listOfExchangeRates.rates[selectedFromCurrency.value])/parseFloat(listOfExchangeRates.rates[selectedToCurrency.value])).toFixed(2);
     }
 }
 
