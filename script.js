@@ -3,6 +3,10 @@ exchangeRate.open('GET', 'https://openexchangerates.org/api/latest.json?app_id=2
 exchangeRate.onload = function(){
     const listOfExchangeRates = JSON.parse(exchangeRate.response);
     const exchangeRatesCurrencies = Object.keys(listOfExchangeRates.rates);
+    const exchangeRatesValues = Object.values(listOfExchangeRates.rates);
+
+    
+
 
     for (let i = 0; i < exchangeRatesCurrencies.length; i++){
         //FROM CURRENCY INPUT
@@ -27,20 +31,25 @@ exchangeRate.onload = function(){
 
     console.log(exchangeRatesCurrencies);
     console.log(listOfExchangeRates.rates);
+    console.log(typeof(listOfExchangeRates.rates));
+
+    
+    
+    console.log(exchangeRatesValues);
     
 
     }
 
+   /* function xyz(){
+    if (fromCurrencyOption.innerHTML === "USD" && toCurrencyOption.innerHTML === "EUR"){
+    const currencyTwoValue = document.getElementById('tocurrencytwo');
+    currencyTwoValue.innerHTML = listOfExchangeRates.rates.EUR;
 
-function calculateExchange(){
-    //onload event should be calculated
-    //on change event - there is one thing we have the exchange rates for the base currency and it would be necessary to really 
-    //recalculate the exchange rates - what if the user chooses different exchange rate than USD? USD to EUR or any other is pretty easy
-    //but what about CZK to EUR when we have the courses just for USD vs other currencies?
-
-    if (fromCurrencyOption.innerHTML === "USD" || toCurrencyOption.innerHTML === "USD"){
-        
+    } else {
+        return;
     }
 }
-
+*/
+    //const currencyOneValue = document.getElementById('fromcurrencyone');
 exchangeRate.send();
+
