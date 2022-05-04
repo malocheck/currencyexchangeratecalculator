@@ -8,13 +8,11 @@ const resultToCurrency = document.getElementById('tocurrencytwo');
 
 const exchangeRate = new XMLHttpRequest();
 exchangeRate.open('GET', 'https://openexchangerates.org/api/latest.json?app_id=2c6d838f744844cd81ef87ec5ba83624')
+
+//BASIC ONLOAD FUNCTION
 exchangeRate.onload = function(){
     const listOfExchangeRates = JSON.parse(exchangeRate.response);
-    if(selectedFromCurrency.value === 'USD' && selectedToCurrency.value === 'EUR') {
-        resultToCurrency.value = (parseFloat(resultFromCurrency.value) * parseFloat(listOfExchangeRates.rates[selectedToCurrency.value])).toFixed(2);
-    } else {
-        return;
-    }
+    (selectedFromCurrency.value === 'USD' && selectedToCurrency.value === 'EUR') ? resultToCurrency.value = (parseFloat(resultFromCurrency.value) * parseFloat(listOfExchangeRates.rates[selectedToCurrency.value])).toFixed(2) : alert("Something is wrong!");
 }
 
 function calculateFrom(){
@@ -35,10 +33,10 @@ function calculateTo(){
     }
 }
 
-
+//EVENTS INPUT
 resultFromCurrency.addEventListener('input', calculateFrom);
 resultToCurrency.addEventListener('input', calculateTo);
-
+//EVENTS CHANGE
 selectedFromCurrency.addEventListener('change', calculateFrom);
 selectedToCurrency.addEventListener ('change', calculateTo);
 
