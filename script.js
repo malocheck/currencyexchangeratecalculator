@@ -1,55 +1,47 @@
+//LIST OF CURRENCIES SELECTS
+const selectedFromCurrency = document.getElementById('fromcurrencytypeone');
+const selectedToCurrency = document.getElementById('tocurrencytypetwo');
+
+//INPUTS AND RESULTS INPUT
+const resultFromCurrency = document.getElementById('fromcurrencyone');
+const resultToCurrency = document.getElementById('tocurrencytwo');
+
 const exchangeRate = new XMLHttpRequest();
 exchangeRate.open('GET', 'https://openexchangerates.org/api/latest.json?app_id=2c6d838f744844cd81ef87ec5ba83624')
 exchangeRate.onload = function(){
     const listOfExchangeRates = JSON.parse(exchangeRate.response);
-    const exchangeRatesCurrencies = Object.keys(listOfExchangeRates.rates);
-    const exchangeRatesValues = Object.values(listOfExchangeRates.rates);
-
-    
-
-
-    for (let i = 0; i < exchangeRatesCurrencies.length; i++){
-        //FROM CURRENCY INPUT
-        let fromCurrencyOption = document.createElement('option');
-        fromCurrencyOption.innerHTML = exchangeRatesCurrencies[i];
-        if (fromCurrencyOption.innerHTML === "USD"){
-            fromCurrencyOption.setAttribute("selected", "true");
-        };
-        let visibleListOfFromCurrencies = document.getElementById('fromcurrencytypeone');
-        visibleListOfFromCurrencies.append(fromCurrencyOption);
-
-        //TO CURRENCY INPUT
-        let toCurrencyOption = document.createElement('option');
-        toCurrencyOption.innerHTML = exchangeRatesCurrencies[i];
-        if (toCurrencyOption.innerHTML === "EUR"){
-            toCurrencyOption.setAttribute("selected", "true");
-        };
-        let visibleListOfToCurrencies = document.getElementById('fromcurrencytypetwo');
-        visibleListOfToCurrencies.append(toCurrencyOption);
-    };
-
-
-    console.log(exchangeRatesCurrencies);
-    console.log(listOfExchangeRates.rates);
-    console.log(typeof(listOfExchangeRates.rates));
-
-    
-    
-    console.log(exchangeRatesValues);
-    
-
-    }
-
-   /* function xyz(){
-    if (fromCurrencyOption.innerHTML === "USD" && toCurrencyOption.innerHTML === "EUR"){
-    const currencyTwoValue = document.getElementById('tocurrencytwo');
-    currencyTwoValue.innerHTML = listOfExchangeRates.rates.EUR;
-
+    if(selectedFromCurrency.value === 'USD' && selectedToCurrency.value === 'EUR') {
+        resultToCurrency.value = parseFloat(resultFromCurrency.value) * parseFloat(listOfExchangeRates.rates[selectedToCurrency.value]);
     } else {
         return;
     }
 }
-*/
-    //const currencyOneValue = document.getElementById('fromcurrencyone');
+
+function calculateFrom(){
+const listOfExchangeRates = JSON.parse(exchangeRate.response);
+    if(selectedFromCurrency.value === 'USD' && selectedToCurrency.value === 'EUR') {
+        resultToCurrency.value = parseFloat(resultFromCurrency.value) * parseFloat(listOfExchangeRates.rates[selectedToCurrency.value]);
+    } else {
+        resultToCurrency.value = parseFloat(resultFromCurrency.value) * parseFloat(listOfExchangeRates.rates[selectedToCurrency.value])/parseFloat(listOfExchangeRates.rates[selectedFromCurrency.value]);
+    }
+}
+
+function calculateTo(){
+    const listOfExchangeRates = JSON.parse(exchangeRate.response);
+    if(selectedFromCurrency.value === 'USD' && selectedToCurrency.value === 'EUR') {
+        resultFromCurrency.value = parseFloat(resultToCurrency.value) / parseFloat(listOfExchangeRates.rates[selectedToCurrency.value]);
+    } else {
+        resultFromCurrency.value = parseFloat(resultToCurrency.value) * parseFloat(listOfExchangeRates.rates[selectedFromCurrency.value])/parseFloat(listOfExchangeRates.rates[selectedToCurrency.value]);
+    }
+}
+
+
+resultFromCurrency.addEventListener('input', calculateFrom);
+resultToCurrency.addEventListener('input', calculateTo);
+
+selectedFromCurrency.addEventListener('change', calculateFrom);
+selectedToCurrency.addEventListener ('change', calculateTo);
+
 exchangeRate.send();
+
 
