@@ -20,7 +20,7 @@ const listOfExchangeRates = JSON.parse(exchangeRate.response);
     if(selectedFromCurrency.value === 'USD' && selectedToCurrency.value === 'EUR') {
         resultToCurrency.value = (parseFloat(resultFromCurrency.value) * parseFloat(listOfExchangeRates.rates[selectedToCurrency.value])).toFixed(2);
     } else {
-        resultToCurrency.value = (parseFloat(resultFromCurrency.value) * parseFloat(listOfExchangeRates.rates[selectedToCurrency.value])/parseFloat(listOfExchangeRates.rates[selectedFromCurrency.value])).toFixed(2);
+        resultToCurrency.value = (resultFromCurrency.value * parseFloat(listOfExchangeRates.rates[selectedToCurrency.value])/parseFloat(listOfExchangeRates.rates[selectedFromCurrency.value])).toFixed(2);
     }
 }
 
@@ -29,9 +29,10 @@ function calculateTo(){
     if(selectedFromCurrency.value === 'USD' && selectedToCurrency.value === 'EUR') {
         resultFromCurrency.value = (parseFloat(resultToCurrency.value) / parseFloat(listOfExchangeRates.rates[selectedToCurrency.value])).toFixed(2);
     } else {
-        resultFromCurrency.value = (parseFloat(resultToCurrency.value) * parseFloat(listOfExchangeRates.rates[selectedFromCurrency.value])/parseFloat(listOfExchangeRates.rates[selectedToCurrency.value])).toFixed(2);
+        resultFromCurrency.value = (resultToCurrency.value * parseFloat(listOfExchangeRates.rates[selectedFromCurrency.value])/parseFloat(listOfExchangeRates.rates[selectedToCurrency.value])).toFixed(2);
     }
 }
+
 
 //EVENTS INPUT
 resultFromCurrency.addEventListener('input', calculateFrom);
@@ -39,6 +40,7 @@ resultToCurrency.addEventListener('input', calculateTo);
 //EVENTS CHANGE
 selectedFromCurrency.addEventListener('change', calculateFrom);
 selectedToCurrency.addEventListener ('change', calculateTo);
+
 
 exchangeRate.send();
 
