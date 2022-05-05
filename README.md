@@ -11,11 +11,11 @@
 
 4) You can simply write the number into the inputs and it automatically calculates the output for you.
 
-5) You can also switch the currencies and choose your preffered pair from the drop down list. It automatically calculate the calues on change of the currencies.
+5) You can also switch the currencies and choose your preffered pair from the drop down list. It automatically calculate the values on change of the currencies.
 
 
 WHAT COULD BE BETTER?
 1) I have not managed to create my own API and also saving the data to the server/file and then display it. Right now I am in the process of learning both of these mentioned tasks. Right now I would manage to save the data using the localStorage or sessionStorage, but I know that this is just temporary solution.
 
-2) There could be a lot of good functionalities like for example setting up the currency that we would like to change from based on the location we are entering the website from. (So for example if we are in Czech republic coming to the website - we will automatically after entering the website will be seeing the CZK to EUR for example)
+2) There could be a lot of good functionalities like for example setting up the currency that we would like to change from based on the location we are entering the website from. (So for example if we are in Czech republic coming to the website - we will automatically after entering the website will be seeing the conversion from CZK to EUR)
 

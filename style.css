@@ -67,3 +67,9 @@ input[type=number] {
 }
 
 /*RESPONSIVE*/
+@media (max-width: 350px) {
+    #currencycontainer #fromcurrencyonesection{
+        flex-direction: column;
+        margin-bottom: 40px;
+    }
+}
