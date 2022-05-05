@@ -19,3 +19,6 @@ WHAT COULD BE BETTER?
 
 2) There could be a lot of good functionalities like for example setting up the currency that we would like to change from based on the location we are entering the website from. (So for example if we are in Czech republic coming to the website - we will automatically after entering the website will be seeing the conversion from CZK to EUR)
 
+ERRORS TO BE FIXED:
+1) The specified value "NaN" cannot be parsed, or is out of range - when I delete the numbers from input to nothing. This error does not have an impact on the app but need to be fixed.
+
